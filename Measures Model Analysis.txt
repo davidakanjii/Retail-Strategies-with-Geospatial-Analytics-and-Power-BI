@@ -1,0 +1,23 @@
+Total Customer = COUNTROWS('Banking Client Data')
+
+Bank Deposit = SUM('Banking Client Data'[Bank Deposits])
+
+Total Check Accounts = SUM('Banking Client Data'[Checking Accounts])
+
+Total FCA = SUM('Banking Client Data'[Foreign Currency Account])
+
+Total Saving Account = SUM('Banking Client Data'[Saving Accounts])
+
+Total Deposit = [Bank Deposit] + [Total Check Accounts] + [Total FCA] + [Total Saving Account]
+
+Bank Loan = SUM('Banking Client Data'[Bank Loans])
+
+Credit Card = SUM('Banking Client Data'[Credit Card Balance])
+
+Biz Lending = SUM('Banking Client Data'[Business Lending])
+
+Total Loan = [Bank Loan] + [Credit Card] +[Biz Lending]
+
+Total Float= [Total Deposit] - [Total Loan]
+
+Total Fees= SUMX('Banking Client Data',[Total Loan]* 'Banking Client Data'[Fees])
